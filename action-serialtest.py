@@ -47,7 +47,7 @@ def action_wrapper(hermes, intentMessage, conf):
     self.timeout = 1
     self.open()
     
-    self.write(b'TI\r\n)
+    self.write(b'TI\r\n')
     time.sleep(0.2)
     repbytes = self.readline().decode('utf8')
     if repbytes != 'TI S\r\n' or repbytes != 'TI D\r\n': 
