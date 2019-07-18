@@ -1,5 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
+$ echo $LANG
+en_GB.UTF-8
 
 import  ConfigParser
 from hermes_python.hermes import Hermes
