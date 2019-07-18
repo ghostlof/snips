@@ -54,7 +54,7 @@ def action_wrapper(hermes, intentMessage, conf):
         self.write(b'ZI\r\n')
         
     # Entrez la phrase à prononcer pour valider l'action
-    result_sentence = 'La balance a bien été tarée'
+    result_sentence = 'La balance a bien ete taree'
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
 
