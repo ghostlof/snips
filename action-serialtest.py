@@ -49,17 +49,18 @@ def action_wrapper(hermes, intentMessage, conf):
     
     self.write(b'TI\r\n')
     time.sleep(0.2)
-    repbytes = self.readline()
+    repbytes = self.readline().decode('utf-8')
     if repbytes[0:4] == 'TI S' or repbytes[0:4] == 'TI D': 
         pass # it break just if you are in this break
     else : # if the conditions are false : send the command again
         self.write(b'ZI\r\n')
         time.sleep(0.2)
-        repbytes = self.readline()
+        repbytes = self.readline().decode('utf-8')
         # waiting valueIme before write it
         while repbytes[0:3] =='':
             time.sleep(0.2) 
-            repbytes = self.readline()
+            repbytes = self.readline().decode('utf-8')
+            
 
 
     # Entrez la phrase à prononcer pour valider l'action
