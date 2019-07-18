@@ -49,26 +49,10 @@ def action_wrapper(hermes, intentMessage, conf):
     
     self.write(b'TI\r\n')
     time.sleep(0.2)
-    print('1')
-    repbytes = self.readline().decode('utf-8')
-    print('2')
-    if repbytes[0:4] == 'TI S' or repbytes[0:4] == 'TI D': 
-        pass # it break just if you are in this break
-    else : # if the conditions are false : send the command again
+    repbytes = self.readline()
+    if repbytes != b'TI S\r\n' or repbytes != b'TI D\r\n': 
         self.write(b'ZI\r\n')
-        time.sleep(0.2)
-        print('3')
-        repbytes = self.readline().decode('utf-8')
-        print('4')
-        # waiting valueIme before write it
-        while repbytes[0:3] =='':
-            time.sleep(0.2) 
-            print('5')
-            repbytes = self.readline().decode('utf-8')
-            print('6')
-            
-
-
+        
     # Entrez la phrase à prononcer pour valider l'action
     result_sentence = 'La balance a bien été tarée'
     current_session_id = intentMessage.session_id
