@@ -47,13 +47,11 @@ def action_wrapper(hermes, intentMessage, conf):
     self.timeout = 1
     self.open()
     
-    command = 'TI\r\n'
-    self.write(bytes(command, 'utf8'))
+    self.write(b'TI\r\n)
     time.sleep(0.2)
-    repbytes = self.readline()
-    if repbytes != b'TI S\r\n' or repbytes != b'TI D\r\n': 
-        command = 'ZI\r\n'
-        self.write(bytes(command, 'utf8'))
+    repbytes = self.readline().decode('utf8')
+    if repbytes != 'TI S\r\n' or repbytes != 'TI D\r\n': 
+        self.write(b'ZI\r\n')
         
     # Entrez la phrase à prononcer pour valider l'action
     result_sentence = 'La balance a bien été tarée'
